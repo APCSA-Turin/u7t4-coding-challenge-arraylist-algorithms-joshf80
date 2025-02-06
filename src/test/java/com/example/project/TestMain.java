@@ -115,7 +115,7 @@ public class TestMain{
 
     @Test
     public void testNotAlone(){
-        ArrayList<Integer> list = new ArrayList<Integer>();
+         ArrayList<Integer> list = new ArrayList<Integer>();
         Collections.addAll(list,1,2,3);
         ArrayList<Integer> expected = new ArrayList<>();
         Collections.addAll(expected,1,3,3);
@@ -124,6 +124,7 @@ public class TestMain{
         list.clear();expected.clear();
         Collections.addAll(list, 1,2,3,2,5,2);
         Collections.addAll(expected,1,3,3,5,5,5);
+        assertEquals(expected,Main.notAlone(list,2));
      
         list.clear();expected.clear();
         Collections.addAll(list, 3,4);
@@ -132,7 +133,7 @@ public class TestMain{
 
         list.clear();expected.clear();
         Collections.addAll(list, 4,3,4,4);
-        Collections.addAll(expected,3,3,4,4);
+        Collections.addAll(expected,4,3,4,4);
         assertEquals(expected,Main.notAlone(list,4));
     }
 
