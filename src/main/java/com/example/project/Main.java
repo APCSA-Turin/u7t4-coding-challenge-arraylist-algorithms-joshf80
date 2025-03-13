@@ -35,8 +35,13 @@ public class Main{
    *  @param stringList  original arraylist of Strings
    */
     public static ArrayList<String> removeThree(ArrayList<String> stringList){
-        // Found method by looking at autocompled ArrayList methods, documentation @ https://www.geeksforgeeks.org/arraylist-removeif-method-in-java/
-        stringList.removeIf(string -> string.length() == 3);
+        for (int i = 0; i < stringList.size(); i++) {
+            if (stringList.get(i).length() == 3) {
+                stringList.remove(i);
+                i--;
+            }
+        }
+
         return stringList;
     }
 
@@ -207,12 +212,15 @@ public class Main{
     // zeroFront([1, 0]) → [0, 1]
     public static ArrayList<Integer> zeroFront(ArrayList<Integer> list){
         int count = 0;
-        for (Integer integer : list) {
-            if (integer == 0) {
-                count++;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == 0) {
+                count ++;
+                list.remove(i);
+                i --;
             }
         }
-        list.removeIf(i -> i == 0);
+        
         for (int index = 0; index < count; index++) {
             list.add(0, 0);
         }
